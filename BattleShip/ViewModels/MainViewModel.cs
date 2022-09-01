@@ -11,5 +11,6 @@ namespace BattleShip.ViewModels
     internal class MainViewModel : BaseViewModel
     {
         public BaseViewModel CurrentViewModel { get; set; } = new GameViewModel();
+
     }
 }
