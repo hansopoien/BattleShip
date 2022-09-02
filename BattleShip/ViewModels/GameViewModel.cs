@@ -10,6 +10,9 @@ namespace BattleShip.ViewModels
 {
     internal class GameViewModel : BaseViewModel
     {
+        public PlayerViewModel Player1 { get; set; } = new HumanPlayerViewModel();
+        public PlayerViewModel Player2 { get; set; } = new HumanPlayerViewModel();
+
         public GameViewModel()
         {
             var ship = new ShipModel(size: 3);
