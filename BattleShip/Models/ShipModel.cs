@@ -14,7 +14,7 @@ namespace BattleShip.Models
     {
         public ObservableCollection<Point> Coordinates { get; private set; } = new ObservableCollection<Point>();
         public int Size { get; }
-        public DirectionEnum Direction { get; private set; } = DirectionEnum.Vertical;
+        public DirectionEnum Direction { get; private set; } = DirectionEnum.Horizontal;
 
         public ShipModel(int size)
         {

@@ -5,6 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:BattleShip.ViewModels"
              xmlns:local="clr-namespace:BattleShip.Views"
+             xmlns:boat="clr-namespace:BattleShip.Views.Boats"
              d:DataContext="{d:DesignInstance vm:GameViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -15,26 +16,60 @@
         CornerRadius="5"
         >
         <Grid>
+
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="20"/>
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
+
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
-            <ItemsControl ItemsSource="{Binding Player2.Ocean}" Grid.Column="1" Grid.Row="2">
+
+            <Canvas Grid.Column="1" Grid.Row="1" Name="ocean" Width="505" Height="505">
+                <Canvas.Background>
+                    <DrawingBrush TileMode="Tile"
+                                  Viewport="0,0,50,50" ViewportUnits="Absolute"
+                                  Viewbox="0,0,50,50" ViewboxUnits="Absolute">
+                        <DrawingBrush.Drawing>
+                            <GeometryDrawing Geometry="M0,0 L50,0 M0,0 L0,50">
+                                <GeometryDrawing.Pen>
+                                    <Pen Brush="DarkGray" Thickness="1" DashCap="Flat">
+                                        <Pen.DashStyle>
+                                            <DashStyle Dashes="5,3"/>
+                                        </Pen.DashStyle>
+                                    </Pen>
+                                </GeometryDrawing.Pen>
+                            </GeometryDrawing>
+                        </DrawingBrush.Drawing>
+                    </DrawingBrush>
+                </Canvas.Background>
+            </Canvas>
+
+            <ItemsControl ItemsSource="{Binding Player2.Ocean}" Grid.Column="2" Grid.Row="1" Width="505" Height="505">
                 <ItemsControl.ItemsPanel>
                     <ItemsPanelTemplate>
                         <UniformGrid Columns="10" Rows="10" MinWidth="500" MinHeight="500"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
-                
-            </ItemsControl>
-            
-        </Grid>
 
+            </ItemsControl>
+            <ItemsControl ItemsSource="{Binding Harbour}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left">
+                <ItemsControl.ItemContainerStyle>
+                    <Style>
+                        <Setter Property="FrameworkElement.Margin" Value="5"/>
+                    </Style>
+                </ItemsControl.ItemContainerStyle>
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+            </ItemsControl>
+
+        </Grid>
     </Border>
 </UserControl>

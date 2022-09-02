@@ -22,7 +22,6 @@ namespace BattleShip.ViewModels
         {
             FillOcean();
         }
-
         private void FillOcean()
         {
             Ocean = new ObservableCollection<OceanPieceComponent>();

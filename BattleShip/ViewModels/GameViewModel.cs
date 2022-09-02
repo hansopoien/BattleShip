@@ -1,7 +1,9 @@
 ﻿using BattleShip.Models;
 using BattleShip.ViewModels.Base;
+using BattleShip.Views.Boats;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,10 +15,19 @@ namespace BattleShip.ViewModels
         public PlayerViewModel Player1 { get; set; } = new HumanPlayerViewModel();
         public PlayerViewModel Player2 { get; set; } = new HumanPlayerViewModel();
 
+        public ObservableCollection<Boat> Harbour { get; private set; }
         public GameViewModel()
         {
-            var ship = new ShipModel(size: 3);
-            ship.SetCordinates(startPoint: new System.Drawing.Point(1, 1));
+            FillHarbour();
+        }
+
+        private void FillHarbour()
+        {
+            Harbour = new ObservableCollection<Boat>()
+            {
+                new CruiserBoat(),
+                new BattleshipBoat()
+            };
         }
     }
 }

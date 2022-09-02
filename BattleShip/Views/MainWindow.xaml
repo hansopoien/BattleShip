@@ -7,7 +7,7 @@
         xmlns:local="clr-namespace:BattleShip"
         d:DataContext="{d:DesignInstance vm:MainViewModel}"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800"
+        Title="MainWindow" Height="800" Width="1600"
         WindowStartupLocation="CenterScreen">
     
     <Window.DataContext>
