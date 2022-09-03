@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BattleShip.Views.Boats;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -23,6 +24,53 @@ namespace BattleShip.Views
         public GameView()
         {
             InitializeComponent();
+        }
+
+        private void ocean_DragOver(object sender, DragEventArgs e)
+        {
+            object data = e.Data.GetData(DataFormats.Serializable);
+            if (data is Boat boat)
+            {
+                Point currentPosition = e.GetPosition(ocean);
+                Point calculatedPosition = GetCalculatedPosition(currentPosition);
+                Canvas.SetLeft(boat, calculatedPosition.X);
+                Canvas.SetTop(boat, calculatedPosition.Y);
+                if (!ocean.Children.Contains(boat))
+                {
+                    Harbour.Children.Remove(boat);
+                    ocean.Children.Add(boat);
+                }
+            }
+        }
+
+        private Point GetCalculatedPosition(Point currentPosition)
+        {
+            int cellSize = 50;
+            double x = currentPosition.X;
+            double y = currentPosition.Y;
+
+            x = Math.Floor(x/cellSize) * cellSize;
+            y = Math.Floor(y/cellSize) * cellSize;
+
+            return new Point(x, y);
+        }
+
+        private void ocean_Drop(object sender, DragEventArgs e)
+        {
+            if (e.Source is Boat boat)
+            {
+                double left = Canvas.GetLeft(boat);
+                double top = Canvas.GetTop(boat);
+                
+                boat.StartPoint = GetConvertedDropPoint(left, top);
+            }
+        }
+
+        private Point GetConvertedDropPoint(double left, double top)
+        {
+            double x = left / 50;
+            double y = top /50;
+            return new Point(x, y);
         }
     }
 }

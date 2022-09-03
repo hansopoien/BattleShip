@@ -29,7 +29,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Canvas Grid.Column="1" Grid.Row="1" Name="ocean" Width="505" Height="505">
+            <Canvas Grid.Column="1" Grid.Row="1" Name="ocean" Width="505" Height="505" DragOver="ocean_DragOver" DragDrop.Drop="ocean_Drop" AllowDrop="True">
                 <Canvas.Background>
                     <DrawingBrush TileMode="Tile"
                                   Viewport="0,0,50,50" ViewportUnits="Absolute"
@@ -47,6 +47,7 @@
                         </DrawingBrush.Drawing>
                     </DrawingBrush>
                 </Canvas.Background>
+                <boat:BattleshipBoat/>
             </Canvas>
 
             <ItemsControl ItemsSource="{Binding Player2.Ocean}" Grid.Column="2" Grid.Row="1" Width="505" Height="505">
@@ -55,9 +56,9 @@
                         <UniformGrid Columns="10" Rows="10" MinWidth="500" MinHeight="500"/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
-
             </ItemsControl>
-            <ItemsControl ItemsSource="{Binding Harbour}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left">
+            
+            <!--<ItemsControl ItemsSource="{Binding Harbour}" Grid.Column="1" Grid.Row="2" HorizontalAlignment="Left">
                 <ItemsControl.ItemContainerStyle>
                     <Style>
                         <Setter Property="FrameworkElement.Margin" Value="5"/>
@@ -68,7 +69,12 @@
                         <StackPanel/>
                     </ItemsPanelTemplate>
                 </ItemsControl.ItemsPanel>
-            </ItemsControl>
+            </ItemsControl>-->
+
+            <StackPanel Name="Harbour" Grid.Column="1" Grid.Row="2">
+                <boat:BattleshipBoat/>
+                <boat:CruiserBoat/>
+            </StackPanel>
 
         </Grid>
     </Border>
