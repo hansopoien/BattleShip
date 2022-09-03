@@ -17,11 +17,27 @@ namespace BattleShip.ViewModels
         public ObservableCollection<OceanPieceComponent>? Ocean { get; private set; }
         
         const int battleFieldSize = 10;
+        private readonly ObservableCollection<Ship> _fleet;
 
-        public PlayerViewModel()
+        public PlayerViewModel(ObservableCollection<Ship> fleet)
         {
             FillOcean();
+            _fleet = fleet;
+            FillOcean();
+            FillShips();
         }
+
+        private void FillShips()
+        {
+            foreach (var ship in _fleet)
+            {
+                Ships.Add(new Ship
+                {
+                    Size = ship.Size,
+                });
+            }
+        }
+
         private void FillOcean()
         {
             Ocean = new ObservableCollection<OceanPieceComponent>();

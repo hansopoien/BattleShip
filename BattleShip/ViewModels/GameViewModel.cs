@@ -11,13 +11,16 @@ namespace BattleShip.ViewModels
 {
     internal class GameViewModel : BaseViewModel
     {
-        public PlayerViewModel Player1 { get; set; } = new HumanPlayerViewModel();
-        public PlayerViewModel Player2 { get; set; } = new HumanPlayerViewModel();
+        public PlayerViewModel Player1 { get; set; }
+        public PlayerViewModel Player2 { get; set; }
 
-        public ObservableCollection<Ship> Harbour { get; private set; }
+        public ObservableCollection<Ship>? Harbour { get; private set; }
         public GameViewModel()
         {
             FillHarbour();
+            Player1 = new HumanPlayerViewModel(Harbour);
+            Player2 = new CpuPlayerViewModel(Harbour);
+
         }
 
         private void FillHarbour()

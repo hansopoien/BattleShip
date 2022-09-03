@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace BattleShip.ViewModels
 {
-    internal class HumanPlayerViewModel : PlayerViewModel
+    internal class CpuPlayerViewModel : PlayerViewModel
     {
-        public HumanPlayerViewModel(ObservableCollection<Ship> fleet) : base(fleet)
+        public CpuPlayerViewModel(ObservableCollection<Ship> fleet) : base(fleet)
         {
         }
     }
