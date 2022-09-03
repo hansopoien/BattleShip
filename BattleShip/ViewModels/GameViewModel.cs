@@ -1,5 +1,4 @@
-﻿using BattleShip.Models;
-using BattleShip.ViewModels.Base;
+﻿using BattleShip.ViewModels.Base;
 using BattleShip.Views.Boats;
 using System;
 using System.Collections.Generic;
@@ -15,7 +14,7 @@ namespace BattleShip.ViewModels
         public PlayerViewModel Player1 { get; set; } = new HumanPlayerViewModel();
         public PlayerViewModel Player2 { get; set; } = new HumanPlayerViewModel();
 
-        public ObservableCollection<Boat> Harbour { get; private set; }
+        public ObservableCollection<Ship> Harbour { get; private set; }
         public GameViewModel()
         {
             FillHarbour();
@@ -23,7 +22,7 @@ namespace BattleShip.ViewModels
 
         private void FillHarbour()
         {
-            Harbour = new ObservableCollection<Boat>()
+            Harbour = new ObservableCollection<Ship>()
             {
                 new CruiserBoat(),
                 new BattleshipBoat()

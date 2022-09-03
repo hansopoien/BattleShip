@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BattleShip.Enums
 {
-    internal enum DirectionEnum
+    public enum DirectionEnum
     {
         Horizontal,
         Vertical

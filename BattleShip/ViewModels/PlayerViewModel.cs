@@ -1,5 +1,5 @@
-﻿using BattleShip.Models;
-using BattleShip.ViewModels.Base;
+﻿using BattleShip.ViewModels.Base;
+using BattleShip.Views.Boats;
 using BattleShip.Views.Components;
 using System;
 using System.Collections.Generic;
@@ -13,7 +13,7 @@ namespace BattleShip.ViewModels
 {
     internal abstract class PlayerViewModel : BaseViewModel
     {
-        public ObservableCollection<ShipModel> Ships { get; set; } = new ObservableCollection<ShipModel>();
+        public ObservableCollection<Ship> Ships { get; set; } = new ObservableCollection<Ship>();
         public ObservableCollection<OceanPieceComponent>? Ocean { get; private set; }
         
         const int battleFieldSize = 10;

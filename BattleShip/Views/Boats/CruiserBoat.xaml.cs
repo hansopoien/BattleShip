@@ -18,7 +18,7 @@ namespace BattleShip.Views.Boats
     /// <summary>
     /// Interaction logic for CruiserBoat.xaml
     /// </summary>
-    public partial class CruiserBoat : Boat
+    public partial class CruiserBoat : Ship
     {
         public CruiserBoat()
         {

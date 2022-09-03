@@ -1,4 +1,4 @@
-﻿<local:Boat x:Class="BattleShip.Views.Boats.CruiserBoat"
+﻿<local:Ship x:Class="BattleShip.Views.Boats.CruiserBoat"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -13,4 +13,4 @@
         Stroke="Black"
         StrokeThickness="2" 
         />
-</local:Boat>
+</local:Ship>

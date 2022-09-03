@@ -29,7 +29,7 @@ namespace BattleShip.Views
         private void ocean_DragOver(object sender, DragEventArgs e)
         {
             object data = e.Data.GetData(DataFormats.Serializable);
-            if (data is Boat boat)
+            if (data is Ship boat)
             {
                 Point currentPosition = e.GetPosition(ocean);
                 Point calculatedPosition = GetCalculatedPosition(currentPosition);
@@ -57,7 +57,7 @@ namespace BattleShip.Views
 
         private void ocean_Drop(object sender, DragEventArgs e)
         {
-            if (e.Source is Boat boat)
+            if (e.Source is Ship boat)
             {
                 double left = Canvas.GetLeft(boat);
                 double top = Canvas.GetTop(boat);
