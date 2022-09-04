@@ -1,4 +1,5 @@
-﻿using BattleShip.ViewModels;
+﻿using BattleShip.Dtos;
+using BattleShip.ViewModels;
 using BattleShip.Views.Boats;
 using System;
 using System.Collections.Generic;
@@ -60,20 +61,25 @@ namespace BattleShip.Views
 
         private void ocean_Drop(object sender, DragEventArgs e)
         {
-            if (e.Source is Ship boat)
+            if (e.Source is Ship ship)
             {
-                double left = Canvas.GetLeft(boat);
-                double top = Canvas.GetTop(boat);
+                double left = Canvas.GetLeft(ship);
+                double top = Canvas.GetTop(ship);
                 
-                boat.StartPoint = GetConvertedDropPoint(left, top);
+                var startPoint = GetConvertedDropPoint(left, top);
+                var shipDto = new ShipDto()
+                {
+                    Ship = ship,
+                    Point = startPoint
+                };
             }
         }
 
-        private Point GetConvertedDropPoint(double left, double top)
+        private System.Drawing.Point GetConvertedDropPoint(double left, double top)
         {
             double x = left / 50;
             double y = top /50;
-            return new Point(x, y);
+            return new System.Drawing.Point((int)x, (int)y);
         }
     }
 }
