@@ -16,6 +16,7 @@ namespace BattleShip.Views.Boats
         public Ship()
         {
             this.MouseMove += Ship_MouseMove;
+            Coordinates = new ObservableCollection<System.Drawing.Point>();
         }
 
 
@@ -80,7 +81,7 @@ namespace BattleShip.Views.Boats
             }
         }
 
-        public void SetCordinates(System.Drawing.Point startPoint)
+        public void SetCoordinates(System.Drawing.Point startPoint)
         {
             int x = startPoint.X;
             int y = startPoint.Y;

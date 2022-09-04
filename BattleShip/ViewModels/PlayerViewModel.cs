@@ -45,9 +45,25 @@ namespace BattleShip.ViewModels
             {
                 for (int y = 0; y < battleFieldSize; y++)
                 {
-                    var piece = new OceanPieceComponent();
-                    //piece.OceanColor = Brushes.Red;
+                    var piece = new OceanPieceComponent()
+                    {
+                        Id = Ocean.Count,
+                        X = x,
+                        Y = y
+                    };
                     Ocean.Add(piece);
+                }
+            }
+        }
+
+        public void ExposeAllShips()
+        {
+            foreach (var ship in Ships)
+            {
+                foreach (var point in ship.Coordinates)
+                {
+                    var piece = Ocean.First(o => o.X == point.X && o.Y == point.Y);
+                    piece.OceanColor = Brushes.Gray;
                 }
             }
         }

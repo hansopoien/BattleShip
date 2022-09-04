@@ -22,6 +22,42 @@ namespace BattleShip.Views.Components
     {
 
 
+
+        public int X
+        {
+            get { return (int)GetValue(XProperty); }
+            set { SetValue(XProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for X.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty XProperty =
+            DependencyProperty.Register("X", typeof(int), typeof(OceanPieceComponent), new PropertyMetadata(0));
+
+
+
+        public int Y
+        {
+            get { return (int)GetValue(YProperty); }
+            set { SetValue(YProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Y.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty YProperty =
+            DependencyProperty.Register("Y", typeof(int), typeof(OceanPieceComponent), new PropertyMetadata(0));
+
+
+
+        public int Id
+        {
+            get { return (int)GetValue(IdProperty); }
+            set { SetValue(IdProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for Id.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty IdProperty =
+            DependencyProperty.Register("Id", typeof(int), typeof(OceanPieceComponent), new PropertyMetadata(0));
+
+
         public SolidColorBrush OceanColor
         {
             get { return (SolidColorBrush)GetValue(OceanColorProperty); }
