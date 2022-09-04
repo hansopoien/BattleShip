@@ -67,5 +67,7 @@ namespace BattleShip.ViewModels
                 }
             }
         }
+
+        public bool HasAllShipsPosition() => Ships.All(x => x.Coordinates.Count > 0);
     }
 }

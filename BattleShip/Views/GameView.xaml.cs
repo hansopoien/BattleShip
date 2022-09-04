@@ -1,4 +1,5 @@
-﻿using BattleShip.Views.Boats;
+﻿using BattleShip.ViewModels;
+using BattleShip.Views.Boats;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,16 +30,18 @@ namespace BattleShip.Views
         private void ocean_DragOver(object sender, DragEventArgs e)
         {
             object data = e.Data.GetData(DataFormats.Serializable);
-            if (data is Ship boat)
+            if (data is Ship ship)
             {
                 Point currentPosition = e.GetPosition(ocean);
                 Point calculatedPosition = GetCalculatedPosition(currentPosition);
-                Canvas.SetLeft(boat, calculatedPosition.X);
-                Canvas.SetTop(boat, calculatedPosition.Y);
-                if (!ocean.Children.Contains(boat))
+                Canvas.SetLeft(ship, calculatedPosition.X);
+                Canvas.SetTop(ship, calculatedPosition.Y);
+                if (!ocean.Children.Contains(ship))
                 {
-                    Harbour.Children.Remove(boat);
-                    ocean.Children.Add(boat);
+                    var model = (GameViewModel)DataContext;
+                    model.RemoveShipCommand.Execute(ship);
+                    Harbour.Children.Remove(ship);    // <-- denna tar Erik bort och får det att fungera, men inte jag :(
+                    ocean.Children.Add(ship);
                 }
             }
         }

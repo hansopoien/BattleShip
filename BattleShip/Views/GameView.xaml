@@ -47,7 +47,7 @@
                         </DrawingBrush.Drawing>
                     </DrawingBrush>
                 </Canvas.Background>
-                <ship:BattleshipBoat/>
+                <!--<ship:BattleshipBoat/>-->
             </Canvas>
 
             <ItemsControl ItemsSource="{Binding Player2.Ocean}" Grid.Column="2" Grid.Row="1" Width="505" Height="505">
@@ -75,6 +75,8 @@
                 <ship:BattleshipBoat/>
                 <ship:CruiserBoat/>
             </StackPanel>
+            <!--<Button Content="Visa Båtarna" Grid.Column="1" Grid.Row="0" Command="{Binding RevealBoatCommand}"/>-->
+            <Button Content="Visa Båtarna" Grid.Column="1" Grid.Row="0" Command="{Binding TestCommand}" CommandParameter="12"/>
 
         </Grid>
     </Border>
