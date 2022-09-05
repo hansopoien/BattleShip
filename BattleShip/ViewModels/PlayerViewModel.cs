@@ -1,4 +1,5 @@
-﻿using BattleShip.ViewModels.Base;
+﻿using BattleShip.Enums;
+using BattleShip.ViewModels.Base;
 using BattleShip.Views.Boats;
 using BattleShip.Views.Components;
 using System;
@@ -63,25 +64,25 @@ namespace BattleShip.ViewModels
             {
                 foreach (var point in ship.Coordinates)
                 {
-                    var piece = Ocean.First(o => o.X == point.X && o.Y == point.Y); // denna kraschar ibland :(
-                    piece.OceanColor = Brushes.Gray;
+                    var piece = Ocean.First(o => o.X == point.X && o.Y == point.Y); // <-- denna kraschar ibland :(
+                    piece.CurrentStatus = Status.Untested;
                 }
             }
         }
 
         public bool HasAllShipsPosition() => Ships.All(x => x.Coordinates.Count > 0);
 
-        public bool UnderAttack(Point point)
+        public Status UnderAttack(Point point)
         {
             foreach (var ship in Ships)
             {
                 var isHitted = ship.IsHitted(point);
                 if (isHitted)
                 {
-                    return true;
+                    return Status.Hit;
                 }
             }
-                return false;
+                return Status.Miss;
         }
     }
 }

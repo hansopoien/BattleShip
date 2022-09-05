@@ -4,11 +4,17 @@
              xmlns:local="clr-namespace:BattleShip"
              xmlns:vm="clr-namespace:BattleShip.ViewModels"
              xmlns:Views="clr-namespace:BattleShip.Views"
+             xmlns:pages="clr-namespace:BattleShip.Views.Pages"
              StartupUri="/Views/MainWindow.xaml">
     <Application.Resources>
         <DataTemplate
             DataType="{x:Type vm:GameViewModel}">
             <Views:GameView/>
+        </DataTemplate>
+
+        <DataTemplate
+            DataType="{x:Type vm:StartViewModel}">
+            <pages:StartPage/>
         </DataTemplate>
     </Application.Resources>
 </Application>

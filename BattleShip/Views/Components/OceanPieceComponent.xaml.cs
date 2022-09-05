@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BattleShip.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,6 +21,21 @@ namespace BattleShip.Views.Components
     /// </summary>
     public partial class OceanPieceComponent : UserControl
     {
+
+
+
+
+
+        public Status CurrentStatus
+        {
+            get { return (Status)GetValue(CurrentStatusProperty); }
+            set { SetValue(CurrentStatusProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CurrentStatus.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CurrentStatusProperty =
+            DependencyProperty.Register("CurrentStatus", typeof(Status), typeof(OceanPieceComponent), new PropertyMetadata(Status.Untested));
+
 
 
 

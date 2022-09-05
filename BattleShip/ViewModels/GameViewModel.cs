@@ -1,12 +1,15 @@
 ﻿using BattleShip.Commands;
 using BattleShip.Dtos;
+using BattleShip.Enums;
 using BattleShip.ViewModels.Base;
 using BattleShip.Views.Boats;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -43,6 +46,31 @@ namespace BattleShip.ViewModels
             var piece = Player2.Ocean.First(o => o.Id == (int)x);
             var attackPoint = new Point(piece.X, piece.Y);
             var result = Player2.UnderAttack(attackPoint);
+            piece.CurrentStatus = result;
+            PlaySound(result);
+        }
+
+        private void PlaySound(Status result)
+        {
+            var sound = new SoundPlayer();
+
+
+            switch (result)
+            {
+                case Status.Miss:
+                    sound.Stream = Properties.Resources.miss_wav;
+                    break;
+                case Status.Hit:
+                    sound.Stream = Properties.Resources.hit_wav;
+                    break;
+                //case Status.Sunk:
+                //    break;
+                //case Status.Untested:
+                //    break;
+                //default:
+                //    break;
+            }
+            sound.Play();
         }
 
         private void PlaceShip(ShipDto x)

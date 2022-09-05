@@ -20,15 +20,15 @@ namespace BattleShip.Views.Boats
         }
 
 
-        public Point StartPoint
+        public System.Drawing.Point StartPoint
         {
-            get { return (Point)GetValue(StartPointProperty); }
+            get { return (System.Drawing.Point)GetValue(StartPointProperty); }
             set { SetValue(StartPointProperty, value); }
         }
 
         // Using a DependencyProperty as the backing store for StartPoint.  This enables animation, styling, binding, etc...
         public static readonly DependencyProperty StartPointProperty =
-            DependencyProperty.Register("StartPoint", typeof(Point), typeof(Ship), new PropertyMetadata(null));
+            DependencyProperty.Register("StartPoint", typeof(System.Drawing.Point), typeof(Ship), new PropertyMetadata(null));
 
 
 
@@ -107,6 +107,23 @@ namespace BattleShip.Views.Boats
                     break;
             }
 
+        }
+
+        public bool IsHitted(System.Drawing.Point point)
+        {
+            if (IsHit(point))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool IsHit(System.Drawing.Point point)
+        {
+            return Coordinates.Any(s => s.X == point.X && s.Y == point.Y);
         }
     }
 }

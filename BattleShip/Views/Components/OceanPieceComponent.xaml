@@ -4,11 +4,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BattleShip.Views.Components"
+             xmlns:converter="clr-namespace:BattleShip.Converters"
              x:Name="ocean"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Resources>
+        <converter:StatusToColorConverter x:Key="StatusToColorConverter"/>
+    </UserControl.Resources>
+    
     <Border BorderBrush="Black" BorderThickness="2">
-        <Grid Background="{Binding OceanColor, ElementName=ocean}">
+        <Grid Background="{Binding CurrentStatus, ElementName=ocean, Converter={StaticResource StatusToColorConverter}}">
             <Grid.InputBindings>
                 <MouseBinding
                     Gesture="LeftClick"
