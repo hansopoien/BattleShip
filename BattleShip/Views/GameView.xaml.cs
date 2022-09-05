@@ -67,18 +67,16 @@ namespace BattleShip.Views
                 double top = Canvas.GetTop(ship);
                 
                 var startPoint = GetConvertedDropPoint(left, top);
-                var shipDto = new ShipDto()
-                {
-                    Ship = ship,
-                    Point = startPoint
-                };
+                var shipDto = new ShipDto(ship, startPoint);
+                var model = (GameViewModel)DataContext;
+                model.PlaceShipCommand.Execute(shipDto);
             }
         }
 
         private System.Drawing.Point GetConvertedDropPoint(double left, double top)
         {
             double x = left / 50;
-            double y = top /50;
+            double y = top / 50;
             return new System.Drawing.Point((int)x, (int)y);
         }
     }

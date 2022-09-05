@@ -16,7 +16,7 @@ namespace BattleShip.ViewModels
         public CpuPlayerViewModel(ObservableCollection<Ship> fleet) : base(fleet)
         {
             PlaceShipRandomly();
-            //ExposeAllShips();
+            ExposeAllShips();
         }
         private static readonly Random random = new();
         private static int battleFieldSize = 10;

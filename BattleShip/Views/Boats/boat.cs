@@ -108,5 +108,22 @@ namespace BattleShip.Views.Boats
             }
 
         }
+
+        public bool IsHitted(System.Drawing.Point point)
+        {
+            if (IsHit(point))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        private bool IsHit(System.Drawing.Point point)
+        {
+            return Coordinates.Any(s => s.X == point.X && s.Y == point.Y);
+        }
     }
 }

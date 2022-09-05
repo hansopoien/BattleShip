@@ -4,6 +4,7 @@ using BattleShip.Views.Components;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -62,12 +63,25 @@ namespace BattleShip.ViewModels
             {
                 foreach (var point in ship.Coordinates)
                 {
-                    var piece = Ocean.First(o => o.X == point.X && o.Y == point.Y);
+                    var piece = Ocean.First(o => o.X == point.X && o.Y == point.Y); // denna kraschar ibland :(
                     piece.OceanColor = Brushes.Gray;
                 }
             }
         }
 
         public bool HasAllShipsPosition() => Ships.All(x => x.Coordinates.Count > 0);
+
+        public bool UnderAttack(Point point)
+        {
+            foreach (var ship in Ships)
+            {
+                var isHitted = ship.IsHitted(point);
+                if (isHitted)
+                {
+                    return true;
+                }
+            }
+                return false;
+        }
     }
 }
